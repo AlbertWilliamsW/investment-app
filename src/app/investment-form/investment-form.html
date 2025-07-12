@@ -1,0 +1,24 @@
+<div class="investment-form">
+    <h1>Investment Form</h1>
+    <form [formGroup]="investmentForm" (ngSubmit)="saveInvestmentDetails()">
+        <div class="mb-3">
+            <label type="text" class="form-label">Asset Type</label>
+            <input type="text" class="form-control" formControlName="assetType" required>
+        </div>
+        <div>
+            <label type="number" class="form-label">Quantity</label>
+            <input type="number" class="form-control" formControlName="quantity" required>
+        </div>
+        <div>
+            <label type="number" class="form-label">Purchase Price</label>
+            <input type="number" class="form-control" formControlName="purchasePrice" required>
+        </div>
+        <div>
+            <label type="text" class="form-label">Date</label>
+            <input type="text" class="form-control" formControlName="date" required>
+        </div>
+        <div class="submit-btn">
+            <button type="submit" [disabled]="!investmentForm.valid" class="btn btn-primary">Submit Investment</button>
+        </div>
+    </form>
+</div>
