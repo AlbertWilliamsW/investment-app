@@ -2,7 +2,14 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+
+export interface InvestmentForm {
+	assetType: string,
+	quantity: number,
+	purchasePrice: number,
+	date: string
+}
 
 @Component({
 	selector: 'app-investment-form',
@@ -16,8 +23,7 @@ export class InvestmentForm {
 
 	constructor(
 		private fb: FormBuilder,
-		private router: Router,
-		private route: ActivatedRoute 
+		private router: Router
 	) {
 		this.investmentForm = this.fb.group({
 			assetType: ['', [Validators.required]],
@@ -25,6 +31,12 @@ export class InvestmentForm {
 			purchasePrice: ['', Validators.required],
 			date: ['', Validators.required]
 		});
+
+		this.investmentForm.valueChanges.subscribe((data) => {
+			console.log(data);
+			console.log(this.investmentForm);
+
+		})
 	}
 
 	saveInvestmentDetails() {

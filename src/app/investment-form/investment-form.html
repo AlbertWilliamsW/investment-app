@@ -2,20 +2,36 @@
     <h1>Investment Form</h1>
     <form [formGroup]="investmentForm" (ngSubmit)="saveInvestmentDetails()">
         <div class="mb-3">
-            <label type="text" class="form-label">Asset Type</label>
+            <label required type="text" class="form-label">Asset Type</label>
             <input type="text" class="form-control" formControlName="assetType" required>
+            <div class="error-message"
+                *ngIf="!investmentForm?.get('assetType')?.value && investmentForm?.get('assetType')?.touched">
+                Please enter Asset Type.
+            </div>
         </div>
-        <div>
+        <div class="mb-3">
             <label type="number" class="form-label">Quantity</label>
             <input type="number" class="form-control" formControlName="quantity" required>
+            <div class="error-message"
+                *ngIf="!investmentForm?.get('quantity')?.value && investmentForm?.get('quantity')?.touched">
+                Please enter Quantity.
+            </div>
         </div>
-        <div>
+        <div class="mb-3">
             <label type="number" class="form-label">Purchase Price</label>
             <input type="number" class="form-control" formControlName="purchasePrice" required>
+            <div class="error-message"
+                *ngIf="!investmentForm?.get('purchasePrice')?.value && investmentForm?.get('purchasePrice')?.touched">
+                Please enter Purchase Price.
+            </div>
         </div>
-        <div>
+        <div class="mb-3">
             <label type="text" class="form-label">Date</label>
             <input type="text" class="form-control" formControlName="date" required>
+            <div class="error-message"
+                *ngIf="!investmentForm?.get('date')?.value && investmentForm?.get('date')?.touched">
+                Please enter date.
+            </div>
         </div>
         <div class="submit-btn">
             <button type="submit" [disabled]="!investmentForm.valid" class="btn btn-primary">Submit Investment</button>

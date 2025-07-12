@@ -7,3 +7,11 @@ div.investment-form {
 .submit-btn {
     margin-top: 2rem;
 }
+
+.error-message {
+    color: red;
+}
+
+.error-input {
+    border-color: red;
+}
